@@ -4,7 +4,16 @@ var cities = getCitiesFromLS();
 var priorSearchEl = document.getElementById('prior-search');
 
 function getForecast(city) {
-    console.log('Getting forecast in ' + city);
+    var geocodeAPI = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=878e67a957d8eb1a75bbbdfe25e0bbfc'
+    fetch(geocodeAPI)
+    .then(function(res) {
+        return res.json();
+    })
+    .then(function(data) {
+        var geocodeAPIresults = data[0];
+        console.log(geocodeAPIresults);
+        
+    })
 }
 
 function getCitiesFromLS() {
