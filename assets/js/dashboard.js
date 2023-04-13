@@ -1,10 +1,6 @@
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#city");
-var cityNameEl = document.querySelector("#city-name");
-var cityTempEl = document.querySelector("#city-temp");
-var cityWindEl = document.querySelector("#city-wind");
-var cityHumidityEl = document.querySelector("#city-humidity");
-var cityUVEl = document.querySelector("#city-uv");
+var currentForecastEl = document.querySelector("#current-forecast");
 
 // 
 var getCityCoordinates = function(city){
@@ -25,28 +21,55 @@ var getCityCoordinates = function(city){
 var citySubmitHandler = function(event) {
     // prevent page form refreshing
     event.preventDefault();
-    console.log("in citySubmithandler");
     // get value from input element
     var city = cityInputEl.value.trim();
 
     if (city) {
-        console.log("in citySubmithandler if");
         getCityCoordinates(city);
+
+        // add city to search history
+
 
         //clear old content
         cityInputEl.value = "";
-        cityNameEl.textContent = "";
-        cityTempEl.textContent = "";
-        cityWindEl.textContent = "";
-        cityHumidityEl.textContent = "";
-        cityUVEl.textContent = "";
+
     } else {
         alert("Please enter a valid city");
     }
 };
 
 var getCity = function(city, lat, long) {
-    var weatherAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + long +'&exclude=minutely,hourly,alerts&appid=878e67a957d8eb1a75bbbdfe25e0bbfc';
+    var weatherAPI = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat +'&lon=' + long +'&units=imperial&exclude=minutely,hourly,alerts&appid=878e67a957d8eb1a75bbbdfe25e0bbfc';
+    fetch(weatherAPI).then(function(res) {
+        return res.json();
+    })
+    .then(function(data) {
+        // display current forescast
+        currentForecast(city, data.current);
+        // display upcoming forecast
+    })
+};
+
+var currentForecast = function(city, weather) {
+    var cityNameEl = document.createElement('h3');
+    cityNameEl.textContent = city;
+    currentForecastEl.appendChild(cityNameEl);
+
+    var cityTempEl = document.createElement('p');
+    cityTempEl.textContent = "Temp: " + weather.temp + " °F";
+    currentForecastEl.appendChild(cityTempEl);
+
+    var cityWindEl = document.createElement('p');
+    cityWindEl.textContent = "Wind: " + weather.wind_speed + " mph";
+    currentForecastEl.appendChild(cityWindEl);
+
+    var cityHumidityEl = document.createElement('p');
+    cityHumidityEl.textContent = "Humidity: " + weather.humidity + "%";
+    currentForecastEl.appendChild(cityHumidityEl);
+
+    var cityUVEl = document.createElement('p');
+    cityUVEl.textContent = "UV Index: " + weather.uvi;
+    currentForecastEl.appendChild(cityUVEl);
 };
 
 cityFormEl.addEventListener("submit", citySubmitHandler)
