@@ -74,6 +74,11 @@ var currentForecast = function(city, weather) {
     cityNameEl.textContent = city + " " + moment.format("L");
     currentForecastEl.appendChild(cityNameEl);
 
+    var iconSrc =  "https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
+    var currentIconEl = document.createElement('img');
+    currentIconEl.src = iconSrc;
+    currentForecastEl.appendChild(currentIconEl);
+
     var cityTempEl = document.createElement('p');
     cityTempEl.textContent = "Temp: " + weather.temp + " °F";
     currentForecastEl.appendChild(cityTempEl);
@@ -96,6 +101,17 @@ var futureForecast = function(forecast) {
     for(var i = 1; i < 6; i++) {
         var forecastContainerEl = document.createElement('div');
         fiveDayForecastEl.appendChild(forecastContainerEl);
+
+        var futureDate = moment.add(1, 'day');
+        futureDate = moment.format("L");
+        var forecastDate = document.createElement('h4');
+        forecastDate.textContent = futureDate;
+        forecastContainerEl.appendChild(forecastDate);
+
+        var iconSrc =  "https://openweathermap.org/img/wn/" + forecast.daily[i].weather[0].icon + "@2x.png";
+        var forecastIconEl = document.createElement('img');
+        forecastIconEl.src = iconSrc;
+        forecastContainerEl.appendChild(forecastIconEl);
 
         var forecastTempEl = document.createElement('p');
         forecastTempEl.textContent = "Temp: " + forecast.daily[i].temp.day + " °F";
