@@ -51,8 +51,9 @@ var citySubmitHandler = function(event) {
 var searchSubmitHandler = function(event) {
     // prevent page form refreshing
     event.preventDefault();
+    var prevCity = event.target.textContent;
 
-
+    getCityCoordinates(prevCity);
 }
 
 var getCity = function(city, lat, long) {
