@@ -121,41 +121,6 @@ var currentForecast = function(city, weather) {
     } else {
         currentUVEl.classList = "uvi-moderate";
     }
-
-    /*
-    console.log(weather);
-    var cityNameEl = document.createElement('h3');
-    cityNameEl.textContent = city + " " + moment.format("L");
-    currentForecastEl.appendChild(cityNameEl);
-
-    var iconSrc =  "https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
-    var currentIconEl = document.createElement('img');
-    currentIconEl.src = iconSrc;
-    currentForecastEl.appendChild(currentIconEl);
-
-    var cityTempEl = document.createElement('p');
-    cityTempEl.textContent = "Temp: " + weather.temp + " °F";
-    currentForecastEl.appendChild(cityTempEl);
-
-    var cityWindEl = document.createElement('p');
-    cityWindEl.textContent = "Wind: " + weather.wind_speed + " mph";
-    currentForecastEl.appendChild(cityWindEl);
-
-    var cityHumidityEl = document.createElement('p');
-    cityHumidityEl.textContent = "Humidity: " + weather.humidity + "%";
-    currentForecastEl.appendChild(cityHumidityEl);
-
-    var cityUVEl = document.createElement('p');
-    cityUVEl.textContent = "UV Index: " + weather.uvi;
-    if(weather.uvi < 3) {
-        cityUVEl.classList = "uvi-favorable";
-    } else if(weather.uvi >= 5) {
-        cityUVEl.classList = "uvi-sever";
-    } else {
-        cityUVEl.classList = "uvi-moderate";
-    }
-    currentForecastEl.appendChild(cityUVEl);
-    */
 };
 
 var futureForecast = function(forecast) {
