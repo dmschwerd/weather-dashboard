@@ -93,6 +93,13 @@ var currentForecast = function(city, weather) {
 
     var cityUVEl = document.createElement('p');
     cityUVEl.textContent = "UV Index: " + weather.uvi;
+    if(weather.uvi < 3) {
+        cityUVEl.classList = "uvi-favorable";
+    } else if(weather.uvi >= 5) {
+        cityUVEl.classList = "uvi-sever";
+    } else {
+        cityUVEl.classList = "uvi-moderate";
+    }
     currentForecastEl.appendChild(cityUVEl);
 };
 

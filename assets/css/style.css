@@ -1,0 +1,17 @@
+.uvi-favorable {
+    background-color: darkgreen;
+    border-radius: 5px;
+    color: white;
+}
+
+.uvi-moderate {
+    background-color: darkorange;
+    border-radius: 5px;
+    color: white;
+}
+
+.uvi-severe {
+    background-color: darkred;
+    border-radius: 5px;
+    color: white;
+}
