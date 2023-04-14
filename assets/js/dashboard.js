@@ -12,30 +12,35 @@ var currentWindEl = document.querySelector("#current-wind");
 var currentHumidityEl = document.querySelector("#current-humidity");
 var currentUVEl = document.querySelector("#current-index");
 
+var forecastOneEl = document.querySelector("#forecast-1");
 var forecastDateOneEl = document.querySelector("#forecast-date-1");
 var forecastIconOneEl = document.querySelector("#forecast-icon-1");
 var forecastTempOneEl = document.querySelector("#forecast-temp-1");
 var forecastWindOneEl = document.querySelector("#forecast-wind-1");
 var forecastHumidityOneEl = document.querySelector("#forecast-humidity-1");
 
+var forecastTwoEl = document.querySelector("#forecast-2");
 var forecastDateTwoEl = document.querySelector("#forecast-date-2");
 var forecastIconTwoEl = document.querySelector("#forecast-icon-2");
 var forecastTempTwoEl = document.querySelector("#forecast-temp-2");
 var forecastWindTwoEl = document.querySelector("#forecast-wind-2");
 var forecastHumidityTwoEl = document.querySelector("#forecast-humidity-2");
 
+var forecastThreeEl = document.querySelector("#forecast-3");
 var forecastDateThreeEl = document.querySelector("#forecast-date-3");
 var forecastIconThreeEl = document.querySelector("#forecast-icon-3");
 var forecastTempThreeEl = document.querySelector("#forecast-temp-3");
 var forecastWindThreeEl = document.querySelector("#forecast-wind-3");
 var forecastHumidityThreeEl = document.querySelector("#forecast-humidity-3");
 
+var forecastFourEl = document.querySelector("#forecast-4");
 var forecastDateFourEl = document.querySelector("#forecast-date-4");
 var forecastIconFourEl = document.querySelector("#forecast-icon-4");
 var forecastTempFourEl = document.querySelector("#forecast-temp-4");
 var forecastWindFourEl = document.querySelector("#forecast-wind-4");
 var forecastHumidityFourEl = document.querySelector("#forecast-humidity-4");
 
+var forecastFiveEl = document.querySelector("#forecast-5");
 var forecastDateFiveEl = document.querySelector("#forecast-date-5");
 var forecastIconFiveEl = document.querySelector("#forecast-icon-5");
 var forecastTempFiveEl = document.querySelector("#forecast-temp-5");
@@ -108,6 +113,7 @@ var getCity = function(city, lat, long) {
 };
 
 var currentForecast = function(city, weather) {
+    currentForecastEl.classList = "current"
     currentDateEl.textContent = city + " " + moment.format("L");
     currentIconEl.src = "https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
     currentTempEl.textContent = "Temp: " + weather.temp + " °F";
@@ -117,13 +123,14 @@ var currentForecast = function(city, weather) {
     if(weather.uvi < 3) {
         currentUVEl.classList = "uvi-favorable";
     } else if(weather.uvi >= 5) {
-        currentUVEl.classList = "uvi-sever";
+        currentUVEl.classList = "uvi-severe";
     } else {
         currentUVEl.classList = "uvi-moderate";
     }
 };
 
 var futureForecast = function(forecast) {
+    forecastOneEl.classList = "forecast";
     var oneDate = moment.add(1, 'day');
     forecastDateOneEl.textContent = oneDate.format("L");
     var iconSrcOne =  "https://openweathermap.org/img/wn/" + forecast.daily[1].weather[0].icon + "@2x.png";
@@ -132,6 +139,7 @@ var futureForecast = function(forecast) {
     forecastWindOneEl.textContent = "Wind: " + forecast.daily[1].wind_speed + " mph";
     forecastHumidityOneEl.textContent = "Humidity: " + forecast.daily[1].humidity + "%";
 
+    forecastTwoEl.classList = "forecast";
     var twoDate = moment.add(1, 'day');
     forecastDateTwoEl.textContent = twoDate.format("L");
     var iconSrcTwo =  "https://openweathermap.org/img/wn/" + forecast.daily[2].weather[0].icon + "@2x.png";
@@ -140,6 +148,7 @@ var futureForecast = function(forecast) {
     forecastWindTwoEl.textContent = "Wind: " + forecast.daily[2].wind_speed + " mph";
     forecastHumidityTwoEl.textContent = "Humidity: " + forecast.daily[2].humidity + "%";
 
+    forecastThreeEl.classList = "forecast";
     var threeDate = moment.add(1, 'day');
     forecastDateThreeEl.textContent = threeDate.format("L");
     var iconSrcThree =  "https://openweathermap.org/img/wn/" + forecast.daily[3].weather[0].icon + "@2x.png";
@@ -148,6 +157,7 @@ var futureForecast = function(forecast) {
     forecastWindThreeEl.textContent = "Wind: " + forecast.daily[3].wind_speed + " mph";
     forecastHumidityThreeEl.textContent = "Humidity: " + forecast.daily[3].humidity + "%";
 
+    forecastFourEl.classList = "forecast";
     var fourDate = moment.add(1, 'day');
     forecastDateFourEl.textContent = fourDate.format("L");
     var iconSrcFour =  "https://openweathermap.org/img/wn/" + forecast.daily[4].weather[0].icon + "@2x.png";
@@ -156,6 +166,7 @@ var futureForecast = function(forecast) {
     forecastWindFourEl.textContent = "Wind: " + forecast.daily[4].wind_speed + " mph";
     forecastHumidityFourEl.textContent = "Humidity: " + forecast.daily[4].humidity + "%";
 
+    forecastFiveEl.classList = "forecast";
     var fiveDate = moment.add(1, 'day');
     forecastDateFiveEl.textContent = fiveDate.format("L");
     var iconSrcFive =  "https://openweathermap.org/img/wn/" + forecast.daily[5].weather[0].icon + "@2x.png";
@@ -171,7 +182,7 @@ var futureForecast = function(forecast) {
 var addSearch = function(city) {
     var previousSearch = document.createElement('button');
     previousSearch.textContent = city;
-    previousSearch.classList = "previous-search";
+    previousSearch.classList = "city-btn";
     searchContainer.appendChild(previousSearch);
 };
 

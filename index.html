@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
 </head>
-<body>
-    <header>
+
+<body class="flex-column min-100-vh">
+    <header class="hero">
         <h1>Weather Dashboard</h1>
     </header>
 
-    <main>
-        <div>
+    <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
             <div>
                 <h2>Search By City:</h2>
                 <form id="city-form">
-                    <input name="city" id="city" type="text" autofocus="true">
-                    <button type="submit">Search</button>
+                    <input name="city" id="city" type="text" autofocus="true" class="form-input">
+                    <button type="submit" class="btn">Search</button>
                 </form>
             </div>
 
@@ -28,7 +30,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="col-12 col-md-8">
             <div id="current-forecast">
                 <h2 id="current-date"></h2>
                 <img id="current-icon">
@@ -40,40 +42,42 @@
 
             <div id="five-day-forecast">
                 <h3>5-Day Forecast:</h3>
-                <div id="forecast-1">
-                    <h4 id="forecast-date-1"></h4>
-                    <img id="forecast-icon-1">
-                    <p id="forecast-temp-1"></p>
-                    <p id="forecast-wind-1"></p>
-                    <p id="forecast-humidity-1"></p>
-                </div>
-                <div id="forecast-2">
-                    <h4 id="forecast-date-2"></h4>
-                    <img id="forecast-icon-2">
-                    <p id="forecast-temp-2"></p>
-                    <p id="forecast-wind-2"></p>
-                    <p id="forecast-humidity-2"></p>
-                </div>
-                <div id="forecast-3">
-                    <h4 id="forecast-date-3"></h4>
-                    <img id="forecast-icon-3">
-                    <p id="forecast-temp-3"></p>
-                    <p id="forecast-wind-3"></p>
-                    <p id="forecast-humidity-3"></p>
-                </div>
-                <div id="forecast-4">
-                    <h4 id="forecast-date-4"></h4>
-                    <img id="forecast-icon-4">
-                    <p id="forecast-temp-4"></p>
-                    <p id="forecast-wind-4"></p>
-                    <p id="forecast-humidity-4"></p>
-                </div>
-                <div id="forecast-5">
-                    <h4 id="forecast-date-5"></h4>
-                    <img id="forecast-icon-5">
-                    <p id="forecast-temp-5"></p>
-                    <p id="forecast-wind-5"></p>
-                    <p id="forecast-humidity-5"></p>
+                <div class="wrap">
+                    <div id="forecast-1">
+                        <h4 id="forecast-date-1"></h4>
+                        <img id="forecast-icon-1">
+                        <p id="forecast-temp-1"></p>
+                        <p id="forecast-wind-1"></p>
+                        <p id="forecast-humidity-1"></p>
+                    </div>
+                    <div id="forecast-2">
+                        <h4 id="forecast-date-2"></h4>
+                        <img id="forecast-icon-2">
+                        <p id="forecast-temp-2"></p>
+                        <p id="forecast-wind-2"></p>
+                        <p id="forecast-humidity-2"></p>
+                    </div>
+                    <div id="forecast-3">
+                        <h4 id="forecast-date-3"></h4>
+                        <img id="forecast-icon-3">
+                        <p id="forecast-temp-3"></p>
+                        <p id="forecast-wind-3"></p>
+                        <p id="forecast-humidity-3"></p>
+                    </div>
+                    <div id="forecast-4">
+                        <h4 id="forecast-date-4"></h4>
+                        <img id="forecast-icon-4">
+                        <p id="forecast-temp-4"></p>
+                        <p id="forecast-wind-4"></p>
+                        <p id="forecast-humidity-4"></p>
+                    </div>
+                    <div id="forecast-5">
+                        <h4 id="forecast-date-5"></h4>
+                        <img id="forecast-icon-5">
+                        <p id="forecast-temp-5"></p>
+                        <p id="forecast-wind-5"></p>
+                        <p id="forecast-humidity-5"></p>
+                    </div>
                 </div>
             </div>
         </div>
